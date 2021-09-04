@@ -1,8 +1,37 @@
-<mat-grid-list cols="2">
-  <mat-grid-tile>
-    <app-recipe-list></app-recipe-list>
-  </mat-grid-tile>
-  <mat-grid-tile>
+<!-- <ul *ngFor="let recipeItem of recipes">
+  <li>
+    <app-recipe-list [item]="recipeItem"></app-recipe-list>
     <app-recipe-detail></app-recipe-detail>
-  </mat-grid-tile>
-</mat-grid-list>
+  </li>
+</ul> -->
+<!--
+
+TODO: Was rewriting this in stages to get to a situation where by a GRID (1 row, 2 cols) could
+be nested inside an unorder list so as to mimic the Master-Detail arrangement for the recipes.
+You might want to look at Material Boostrap as it might make such column arrangements easier than a UI
+component framework targteted at small screens
+
+-->
+<mat-list role="list" *ngFor="let recipeItem of recipes">
+  <mat-list-item role="listitem">
+    <!-- Inserting a Card inside of a list seemed to cause the rendering to always start at top of page.
+         This caused overlaying of repeated items
+    -->
+    <!-- <app-recipe-list [item]="recipeItem"> </app-recipe-list> -->
+    <h2>
+      {{ recipeItem.name }}
+    </h2>
+    <p>
+      {{ recipeItem.description }}
+    </p>
+
+    <!-- <mat-grid-tile> recipe detail appears here </mat-grid-tile> -->
+  </mat-list-item>
+</mat-list>
+
+<!-- <mat-list-item *ngFor="let recipeItem of recipes">
+    <mat-card>
+
+
+    </mat-card>
+  </mat-list-item> -->
